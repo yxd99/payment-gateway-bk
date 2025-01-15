@@ -13,7 +13,7 @@ export function typeormConfig(): TypeOrmModuleOptions {
     };
   }
 
-  return {
+  const config: TypeOrmModuleOptions = {
     username: envs.DB_USER,
     password: envs.DB_PASSWORD,
     host: envs.DB_HOST,
@@ -24,8 +24,10 @@ export function typeormConfig(): TypeOrmModuleOptions {
     ssl: isProd,
     extra,
     synchronize: environment !== 'production',
-    entities: [`${__dirname}/**/*.entity{.ts,.js}`],
+    entities: [`${__dirname}/**/*.orm.entity{.ts,.js}`],
     autoLoadEntities: true,
     logging: !isProd,
   };
+
+  return config;
 }

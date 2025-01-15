@@ -7,8 +7,7 @@ const config = new DocumentBuilder()
   .setTitle(apiInfo.TITLE)
   .setDescription(apiInfo.DESCRIPTION)
   .setVersion(apiInfo.VERSION)
-  .addTag(apiInfo.PREFIX)
-  .addBearerAuth();
+  .addTag(apiInfo.PREFIX);
 
 apiInfo.SERVERS.forEach((server) => {
   config.addServer(server.host, server.description);
