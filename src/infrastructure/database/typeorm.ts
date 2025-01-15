@@ -25,7 +25,8 @@ export function typeormConfig(): TypeOrmModuleOptions {
     extra,
     synchronize: environment !== 'production',
     entities: [`${__dirname}/**/*.orm.entity{.ts,.js}`],
-    autoLoadEntities: true,
+    migrations: [`${__dirname}/migrations/**/*{.ts,.js}`],
+    migrationsTableName: 'migration_table',
     logging: !isProd,
   };
 
