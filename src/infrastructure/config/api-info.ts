@@ -7,7 +7,7 @@ export const PREFIX = 'api';
 export const { PORT } = envs;
 export const SERVERS = [
   {
-    host: `http://localhost:${PORT}`,
+    host: `http://localhost:${PORT}/api`,
     description: 'Local',
   },
 ];
