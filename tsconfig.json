@@ -21,7 +21,6 @@
       "@app/*": ["src/application/*"],
       "@infrastructure/*": ["src/infrastructure/*"],
       "@domain/*": ["src/domain/*"],
-      "@features/*": ["src/features/*"],
     }
   }
 }
