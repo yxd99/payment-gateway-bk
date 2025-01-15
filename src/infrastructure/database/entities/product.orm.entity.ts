@@ -54,6 +54,8 @@ export class ProductORM {
       product.id,
       product.name,
       product.price,
+      product.imageUrl,
+      product.stock,
       product.createdAt,
       product.updatedAt,
     );

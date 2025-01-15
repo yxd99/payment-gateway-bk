@@ -18,8 +18,9 @@ export class CreatePaymentsTable1736961694777 implements MigrationInterface {
             generationStrategy: 'uuid',
             default: 'uuid_generate_v4()',
           },
-          { name: 'transaction_id', type: 'varchar', length: '255' },
+          { name: 'transaction_id', type: 'text' },
           { name: 'amount', type: 'decimal' },
+          { name: 'reference', type: 'text' },
           { name: 'product_id', type: 'uuid' },
           {
             name: 'created_at',
