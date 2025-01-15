@@ -13,29 +13,6 @@ export class Result<T> {
     return new Result(false, error);
   }
 
-  map<U>(fn: (value: T) => U): Result<U> {
-    if (this.isSuccess) {
-      try {
-        const result = fn(this.value!);
-        return Result.ok(result);
-      } catch (error) {
-        return Result.fail(`Error in map: ${error.message}`);
-      }
-    }
-    return Result.fail(this.error!);
-  }
-
-  flatMap<U>(fn: (value: T) => Result<U>): Result<U> {
-    if (this.isSuccess) {
-      try {
-        return fn(this.value!);
-      } catch (error) {
-        return Result.fail(`Error in flatMap: ${error.message}`);
-      }
-    }
-    return Result.fail(this.error!);
-  }
-
   getValue(): T {
     if (!this.isSuccess) {
       throw new Error('Cannot get the value from a failed result');
