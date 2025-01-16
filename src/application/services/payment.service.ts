@@ -83,4 +83,26 @@ export class PaymentService {
       return Result.fail(error);
     }
   }
+
+  async getPaymentById(
+    id: string,
+  ): Promise<Result<Payment & { status: string; statusMessage: string }>> {
+    try {
+      const payment = await this.paymentRepository.findOne(id);
+      if (!payment) {
+        return Result.fail('Payment not found');
+      }
+      const transaction = await this.paymentApiRepository.getTransaction(
+        payment.transactionId,
+      );
+      const { status, status_message: statusMessage } = transaction.data;
+      return Result.ok({
+        ...payment,
+        status,
+        statusMessage,
+      });
+    } catch (error) {
+      return Result.fail(error);
+    }
+  }
 }

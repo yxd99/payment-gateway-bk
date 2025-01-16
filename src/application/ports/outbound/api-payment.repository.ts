@@ -14,4 +14,6 @@ export interface PaymentApiRepository {
   ): Promise<ApiPaymentTransactionResponse>;
 
   getAcceptanceToken(): Promise<ApiPaymentAcceptancesTokenResponse>;
+
+  getTransaction(id: string): Promise<ApiPaymentTransactionResponse>;
 }

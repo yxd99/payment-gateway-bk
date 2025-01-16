@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 
 import { PaymentService } from '@app/services/payment.service';
 import { CreatePaymentDto } from '@infrastructure/http/dto/payment.dto';
@@ -10,6 +10,11 @@ export class PaymentsController {
   @Get('acceptance-token')
   async getAcceptanceToken() {
     return this.paymentsService.getAcceptanceToken();
+  }
+
+  @Get(':id')
+  async getPaymentById(@Param('id') id: string) {
+    return this.paymentsService.getPaymentById(id);
   }
 
   @Post()

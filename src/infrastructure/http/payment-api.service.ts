@@ -103,4 +103,17 @@ export class PaymentApiService implements PaymentApiRepository {
         response.data.presigned_personal_data_auth.acceptance_token,
     };
   }
+
+  async getTransaction(id: string): Promise<ApiPaymentTransactionResponse> {
+    const response =
+      await this.httpClientService.get<ApiPaymentTransactionResponse>(
+        `${envs.PAYMENT_API_URL}/transactions/${id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${envs.PAYMENT_API_PUBLIC_API_KEY}`,
+          },
+        },
+      );
+    return response;
+  }
 }
