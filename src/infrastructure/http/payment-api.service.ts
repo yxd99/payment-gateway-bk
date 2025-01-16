@@ -26,8 +26,8 @@ export class PaymentApiService implements PaymentApiRepository {
       await this.httpClientService.post<ApiPaymentTokenizedResponse>(
         ep,
         {
-          number: String(payload.cardNumber),
-          cvc: String(payload.cvc),
+          number: payload.cardNumber,
+          cvc: payload.cvc,
           exp_month: payload.expMonth,
           exp_year: payload.expYear,
           card_holder: payload.cardHolder,

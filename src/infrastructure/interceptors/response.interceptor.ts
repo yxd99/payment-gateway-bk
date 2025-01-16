@@ -35,7 +35,7 @@ export class ResponseInterceptor implements NestInterceptor {
         const response = {
           code: error.status,
           name: getReasonPhrase(error.status),
-          data: error.response,
+          data: error.response.message ?? error.response,
         };
         return throwError(() => new HttpException(response, error.status));
       }),

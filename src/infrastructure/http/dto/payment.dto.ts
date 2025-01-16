@@ -1,16 +1,24 @@
-import { IsNotEmpty, IsNumber, IsString, IsUUID } from 'class-validator';
+import {
+  IsCreditCard,
+  IsNotEmpty,
+  IsNumber,
+  IsString,
+  IsUUID,
+  Matches,
+} from 'class-validator';
 
 export class CreatePaymentDto {
   @IsNotEmpty()
-  @IsNumber()
+  @IsCreditCard()
   cardNumber: string;
 
   @IsNotEmpty()
-  @IsNumber()
   cvc: string;
 
   @IsNotEmpty()
-  @IsString()
+  @Matches(/^(0[1-9]|1[0-2])\/\d{2}$/, {
+    message: 'invalid format date, must be MM/YY',
+  })
   expirationDate: string;
 
   @IsNotEmpty()
