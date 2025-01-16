@@ -1,5 +1,6 @@
 import {
   IsCreditCard,
+  IsEmail,
   IsNotEmpty,
   IsNumber,
   IsString,
@@ -33,7 +34,7 @@ export class CreatePaymentDto {
   installments: number;
 
   @IsNotEmpty()
-  @IsString()
+  @IsEmail()
   email: string;
 
   @IsNotEmpty()
