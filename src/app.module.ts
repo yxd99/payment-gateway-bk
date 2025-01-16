@@ -1,7 +1,7 @@
 import { Logger, Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
-import { PaymentService } from '@app/services/payment.service';
+import { PaymentsService } from '@app/services/payments.service';
 import { ProductService } from '@app/services/products.service';
 import { PaymentORM } from '@infrastructure/database/entities/payment.orm.entity';
 import { ProductORM } from '@infrastructure/database/entities/product.orm.entity';
@@ -22,7 +22,7 @@ import { PaymentApiService } from '@infrastructure/http/payment-api.service';
   providers: [
     Logger,
     ProductService,
-    PaymentService,
+    PaymentsService,
     HttpClientService,
     PaymentApiService,
     {

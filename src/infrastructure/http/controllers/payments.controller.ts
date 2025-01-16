@@ -1,11 +1,11 @@
 import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 
-import { PaymentService } from '@app/services/payment.service';
+import { PaymentsService } from '@app/services/payments.service';
 import { CreatePaymentDto } from '@infrastructure/http/dto/payment.dto';
 
 @Controller('payments')
 export class PaymentsController {
-  constructor(private readonly paymentsService: PaymentService) {}
+  constructor(private readonly paymentsService: PaymentsService) {}
 
   @Get('acceptance-token')
   async getAcceptanceToken() {

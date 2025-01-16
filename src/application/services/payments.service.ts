@@ -22,8 +22,8 @@ interface CreateTransactionDto {
 }
 
 @Injectable()
-export class PaymentService {
-  logger = new Logger(PaymentService.name);
+export class PaymentsService {
+  logger = new Logger(PaymentsService.name);
 
   constructor(
     @Inject('PaymentRepository')
