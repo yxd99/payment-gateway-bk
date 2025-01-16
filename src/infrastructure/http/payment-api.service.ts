@@ -50,8 +50,9 @@ export class PaymentApiService implements PaymentApiRepository {
   ): Promise<ApiPaymentTransactionResponse> {
     try {
       const currency = 'COP';
+      const amount = Number(payload.amount * 100);
       const signature = await generateSignature({
-        amount: payload.amount,
+        amount,
         currency,
         reference: payload.reference,
       });
@@ -63,7 +64,7 @@ export class PaymentApiService implements PaymentApiRepository {
             currency,
             acceptance_token: payload.acceptanceToken,
             accept_personal_auth: payload.acceptPersonalAuth,
-            amount_in_cents: Number(payload.amount),
+            amount_in_cents: amount,
             customer_email: payload.customerEmail,
             reference: payload.reference,
             payment_method_type: 'CARD',
