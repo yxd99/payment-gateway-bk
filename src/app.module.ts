@@ -8,6 +8,7 @@ import { ProductORM } from '@infrastructure/database/entities/product.orm.entity
 import { PaymentRepositoryImpl } from '@infrastructure/database/repositories/payment.repository';
 import { ProductRepositoryImpl } from '@infrastructure/database/repositories/product.repository';
 import { typeormConfig } from '@infrastructure/database/typeorm';
+import { PaymentsController } from '@infrastructure/http/controllers/payments.controller';
 import { ProductController } from '@infrastructure/http/controllers/products.controller';
 import { HttpClientService } from '@infrastructure/http/http-client.service';
 import { PaymentApiService } from '@infrastructure/http/payment-api.service';
@@ -17,7 +18,7 @@ import { PaymentApiService } from '@infrastructure/http/payment-api.service';
     TypeOrmModule.forRoot(typeormConfig()),
     TypeOrmModule.forFeature([ProductORM, PaymentORM]),
   ],
-  controllers: [ProductController],
+  controllers: [ProductController, PaymentsController],
   providers: [
     Logger,
     ProductService,

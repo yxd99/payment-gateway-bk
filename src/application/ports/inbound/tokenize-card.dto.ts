@@ -1,5 +1,5 @@
 export interface TokenizeCardDto {
-  number: string;
+  cardNumber: string;
   cvc: string;
   expMonth: string;
   expYear: string;

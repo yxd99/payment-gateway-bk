@@ -1,16 +1,17 @@
 import { Product } from './product.entity';
 
 interface PaymentProps {
-  id: string;
+  id?: string;
   product: Product;
   amount: number;
   transactionId: string;
   createdAt: Date;
   reference: string;
+  customerEmail: string;
 }
 
 export class Payment {
-  public readonly id: string;
+  public readonly id?: string;
 
   public product: Product;
 
@@ -22,6 +23,8 @@ export class Payment {
 
   public readonly createdAt: Date;
 
+  public customerEmail: string;
+
   constructor({
     id,
     product,
@@ -29,6 +32,7 @@ export class Payment {
     transactionId,
     createdAt,
     reference,
+    customerEmail,
   }: PaymentProps) {
     this.id = id;
     this.product = product;
@@ -36,5 +40,6 @@ export class Payment {
     this.amount = amount;
     this.transactionId = transactionId;
     this.createdAt = createdAt;
+    this.customerEmail = customerEmail;
   }
 }

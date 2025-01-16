@@ -19,7 +19,8 @@ export class PaymentRepositoryImpl implements PaymentRepository {
     paymentORM.amount = payment.amount;
     paymentORM.reference = payment.reference;
     paymentORM.transactionId = payment.transactionId;
-    throw new Error(`Method not implemented. ${payment}`);
+    paymentORM.customerEmail = payment.customerEmail;
+    return this.paymentRepository.save(paymentORM);
   }
 
   async findOne(id: string): Promise<Payment | null> {

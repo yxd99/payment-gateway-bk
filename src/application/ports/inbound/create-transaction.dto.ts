@@ -3,4 +3,7 @@ export interface CreateTransactionDto {
   token: string;
   installments: number;
   reference: string;
+  customerEmail: string;
+  acceptanceToken: string;
+  acceptPersonalAuth: string;
 }

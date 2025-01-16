@@ -18,6 +18,9 @@ export class PaymentORM {
   @Column({ type: 'text', name: 'transaction_id' })
   transactionId: string;
 
+  @Column({ type: 'text', name: 'customer_email' })
+  customerEmail: string;
+
   @Column({ type: 'decimal', name: 'amount' })
   amount: number;
 
@@ -43,6 +46,7 @@ export class PaymentORM {
       transactionId: payment.transactionId,
       createdAt: payment.createdAt,
       reference: payment.reference,
+      customerEmail: payment.customerEmail,
     });
   }
 

@@ -4,6 +4,7 @@ import {
   ExecutionContext,
   CallHandler,
   HttpException,
+  InternalServerErrorException,
 } from '@nestjs/common';
 import { getReasonPhrase } from 'http-status-codes';
 import { throwError } from 'rxjs';
@@ -17,12 +18,16 @@ export class ResponseInterceptor implements NestInterceptor {
         const response = context.switchToHttp().getResponse();
         const { statusCode } = response;
         const name = getReasonPhrase(statusCode);
-
         const result = {
           name,
           code: statusCode,
-          data: data || null,
+          data: {},
         };
+        if (data.isSuccess) {
+          result.data = data.getValue();
+        } else {
+          throw new InternalServerErrorException(data.getError());
+        }
 
         return result;
       }),
@@ -30,7 +35,7 @@ export class ResponseInterceptor implements NestInterceptor {
         const response = {
           code: error.status,
           name: getReasonPhrase(error.status),
-          data: error.response?.message,
+          data: error.response,
         };
         return throwError(() => new HttpException(response, error.status));
       }),

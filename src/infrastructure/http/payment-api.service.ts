@@ -1,23 +1,43 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 
 import { CreateTransactionDto } from '@app/ports/inbound/create-transaction.dto';
 import { TokenizeCardDto } from '@app/ports/inbound/tokenize-card.dto';
-import { ApiPaymentResponse } from '@app/ports/outbound/api-payment-response.repository';
+import {
+  ApiPaymentAcceptancesTokenResponse,
+  ApiPaymentAcceptanceTokenResponse,
+  ApiPaymentTokenizedResponse,
+  ApiPaymentTransactionResponse,
+} from '@app/ports/outbound/api-payment-response.repository';
 import { PaymentApiRepository } from '@app/ports/outbound/api-payment.repository';
 import { envs } from '@infrastructure/config/envs';
+import { generateSignature } from '@infrastructure/utils/signature.util';
 
 import { HttpClientService } from './http-client.service';
 
 @Injectable()
 export class PaymentApiService implements PaymentApiRepository {
+  logger = new Logger(PaymentApiService.name);
+
   constructor(private readonly httpClientService: HttpClientService) {}
 
   async tokenizeCard(payload: TokenizeCardDto): Promise<string> {
-    const response = await this.httpClientService.post<ApiPaymentResponse>(
-      `${envs.PAYMENT_API_URL_SANDBOX}/v1/tokens/cards`,
-      payload,
-    );
-
+    const ep = `${envs.PAYMENT_API_URL}/tokens/cards`;
+    const response =
+      await this.httpClientService.post<ApiPaymentTokenizedResponse>(
+        ep,
+        {
+          number: String(payload.cardNumber),
+          cvc: String(payload.cvc),
+          exp_month: payload.expMonth,
+          exp_year: payload.expYear,
+          card_holder: payload.cardHolder,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${envs.PAYMENT_API_PUBLIC_API_KEY}`,
+          },
+        },
+      );
     if (response.status === 'CREATED' && response.data?.id) {
       return response.data.id;
     }
@@ -25,25 +45,61 @@ export class PaymentApiService implements PaymentApiRepository {
     throw new Error('Tokenization failed: Invalid response');
   }
 
-  async createTransaction(payload: CreateTransactionDto): Promise<unknown> {
-    const response = await this.httpClientService.post<Record<string, unknown>>(
-      '/transaction',
-      {
-        amount_in_cents: payload.amount,
+  async createTransaction(
+    payload: CreateTransactionDto,
+  ): Promise<ApiPaymentTransactionResponse> {
+    try {
+      const currency = 'COP';
+      const signature = await generateSignature({
+        amount: payload.amount,
+        currency,
         reference: payload.reference,
-        currency: 'COP',
-        payment_method: {
-          type: 'CARD',
-          token: payload.token,
-          installments: payload.installments,
-        },
-      },
-    );
+      });
+      const response =
+        await this.httpClientService.post<ApiPaymentTransactionResponse>(
+          `${envs.PAYMENT_API_URL}/transactions`,
+          {
+            signature,
+            currency,
+            acceptance_token: payload.acceptanceToken,
+            accept_personal_auth: payload.acceptPersonalAuth,
+            amount_in_cents: Number(payload.amount),
+            customer_email: payload.customerEmail,
+            reference: payload.reference,
+            payment_method_type: 'CARD',
+            payment_method: {
+              type: 'CARD',
+              token: payload.token,
+              installments: payload.installments,
+            },
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${envs.PAYMENT_API_PUBLIC_API_KEY}`,
+            },
+          },
+        );
+      if (response.data.status === 'DECLINED') {
+        throw new Error(
+          `Transaction declined: ${response.data.status_message}`,
+        );
+      }
 
-    if (response.status === 'DECLINED') {
-      throw new Error(`Transaction declined: ${response.status_message}`);
+      return response;
+    } catch (error) {
+      throw error.response.data;
     }
+  }
 
-    return response.data;
+  async getAcceptanceToken(): Promise<ApiPaymentAcceptancesTokenResponse> {
+    const response =
+      await this.httpClientService.get<ApiPaymentAcceptanceTokenResponse>(
+        `${envs.PAYMENT_API_URL}/merchants/${envs.PAYMENT_API_PUBLIC_API_KEY}`,
+      );
+    return {
+      acceptanceToken: response.data.presigned_acceptance.acceptance_token,
+      personalAuthToken:
+        response.data.presigned_personal_data_auth.acceptance_token,
+    };
   }
 }
