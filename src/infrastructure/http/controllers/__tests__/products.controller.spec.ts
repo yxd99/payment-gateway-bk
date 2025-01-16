@@ -31,8 +31,8 @@ describe('ProductController', () => {
   describe('getProducts', () => {
     it('should return a list of products', async () => {
       const products: Product[] = [
-        new Product('1', 'Product 1', 100, new Date(), new Date()),
-        new Product('2', 'Product 2', 100, new Date(), new Date()),
+        new Product('1', 'Product 1', 100, '', 5, new Date(), new Date()),
+        new Product('2', 'Product 2', 100, '', 0, new Date(), new Date()),
       ];
       service.getProducts = jest.fn().mockResolvedValue(Result.ok(products));
 
@@ -55,6 +55,8 @@ describe('ProductController', () => {
         '1',
         'Product 1',
         100,
+        '',
+        5,
         new Date(),
         new Date(),
       );
