@@ -1,4 +1,4 @@
-import { CreateTransactionDto } from '@app/ports/inbound/create-transaction.dto';
+import { CreateApiTransactionDto } from '@app/ports/inbound/create-api-transaction.dto';
 import { TokenizeCardDto } from '@app/ports/inbound/tokenize-card.dto';
 
 import {
@@ -10,7 +10,7 @@ export interface PaymentApiRepository {
   tokenizeCard(payload: TokenizeCardDto): Promise<string>;
 
   createTransaction(
-    payload: CreateTransactionDto,
+    payload: CreateApiTransactionDto,
   ): Promise<ApiPaymentTransactionResponse>;
 
   getAcceptanceToken(): Promise<ApiPaymentAcceptancesTokenResponse>;

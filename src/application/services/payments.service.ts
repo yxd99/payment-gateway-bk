@@ -1,25 +1,12 @@
 import { Inject, Injectable, Logger } from '@nestjs/common';
 
 import { Result } from '@app/common/result';
+import { CreateTransactionDto } from '@app/ports/inbound/create-transaction.dto';
 import { ApiPaymentAcceptancesTokenResponse } from '@app/ports/outbound/api-payment-response.repository';
 import { PaymentApiRepository } from '@app/ports/outbound/api-payment.repository';
 import { PaymentRepository } from '@app/ports/outbound/payments.repository';
 import { ProductRepository } from '@app/ports/outbound/product.repository';
 import { Payment } from '@domain/entities/payment.entity';
-
-interface CreateTransactionDto {
-  acceptanceToken: string;
-  acceptPersonalAuth: string;
-  productId: string;
-  installments: number;
-  email: string;
-  cardDetails: {
-    cardHolder: string;
-    cvc: string;
-    expirationDate: string;
-    cardNumber: string;
-  };
-}
 
 @Injectable()
 export class PaymentsService {
