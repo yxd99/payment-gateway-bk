@@ -92,6 +92,7 @@
     "testEnvironment": "node",
     "modulePathIgnorePatterns": [
       "<rootDir>/dist/",
+      "^(?!.*infrastructure/http/controllers).*infrastructure/http/",
       "<rootDir>/test/",
       "<rootDir>/.eslintrc.js",
       "<rootDir>/coverage/",
@@ -99,7 +100,8 @@
       "<rootDir>/src/main.ts",
       "<rootDir>/src/infrastructure/config/",
       "<rootDir>/src/infrastructure/database/",
-      "<rootDir>/src/infrastructure/interceptors/"
+      "<rootDir>/src/infrastructure/interceptors/",
+      "<rootDir>/src/infrastructure/utils/"
     ],
     "moduleNameMapper": {
       "@app/(.*)": "<rootDir>/src/application/$1",

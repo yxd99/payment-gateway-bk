@@ -1,4 +1,11 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  NotFoundException,
+  Param,
+  Post,
+} from '@nestjs/common';
 
 import { PaymentsService } from '@app/services/payments.service';
 import { CreatePaymentDto } from '@infrastructure/http/dto/payment.dto';
@@ -14,7 +21,12 @@ export class PaymentsController {
 
   @Get(':id')
   async getPaymentById(@Param('id') id: string) {
-    return this.paymentsService.getPaymentById(id);
+    const result = await this.paymentsService.getPaymentById(id);
+    if (!result.isSuccess) {
+      throw new NotFoundException('Payment not found');
+    }
+
+    return result;
   }
 
   @Post()
