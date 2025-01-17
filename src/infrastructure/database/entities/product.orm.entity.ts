@@ -15,7 +15,7 @@ export class ProductORM {
 
   @Column({
     name: 'price',
-    type: 'decimal',
+    type: 'integer',
   })
   price: number;
 
@@ -54,6 +54,8 @@ export class ProductORM {
       product.id,
       product.name,
       product.price,
+      product.imageUrl,
+      product.stock,
       product.createdAt,
       product.updatedAt,
     );

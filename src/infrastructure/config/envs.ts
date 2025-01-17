@@ -14,6 +14,10 @@ const envSchema = joi
     DB_NAME: joi.string().required(),
     DB_PASSWORD: joi.string().required(),
     DB_SCHEMA: joi.string().default('public'),
+    PAYMENT_API_URL: joi.string().required(),
+    PAYMENT_API_PUBLIC_API_KEY: joi.string().required(),
+    PAYMENT_API_PRIVATE_API_KEY: joi.string().required(),
+    PAYMENT_API_SIGNATURE: joi.string().required(),
   })
   .unknown(true);
 
@@ -32,4 +36,8 @@ export const envs = {
   DB_NAME: value.DB_NAME,
   DB_PASSWORD: value.DB_PASSWORD,
   DB_SCHEMA: value.DB_SCHEMA,
+  PAYMENT_API_URL: value.PAYMENT_API_URL,
+  PAYMENT_API_PUBLIC_API_KEY: value.PAYMENT_API_PUBLIC_API_KEY,
+  PAYMENT_API_PRIVATE_API_KEY: value.PAYMENT_API_PRIVATE_API_KEY,
+  PAYMENT_API_SIGNATURE: value.PAYMENT_API_SIGNATURE,
 };

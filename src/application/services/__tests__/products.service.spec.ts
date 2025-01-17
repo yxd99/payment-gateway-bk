@@ -32,8 +32,8 @@ describe('ProductService', () => {
   describe('findAll', () => {
     it('should return a list of products', async () => {
       const products: Product[] = [
-        new Product('1', 'Product 1', 100, new Date(), new Date()),
-        new Product('2', 'Product 2', 100, new Date(), new Date()),
+        new Product('1', 'Product 1', 100, '', 5, new Date(), new Date()),
+        new Product('2', 'Product 2', 100, '', 5, new Date(), new Date()),
       ];
       repository.findAll = jest.fn().mockResolvedValue(products);
 
@@ -75,6 +75,8 @@ describe('ProductService', () => {
         '1',
         'Product 1',
         100,
+        '',
+        5,
         new Date(),
         new Date(),
       );
