@@ -38,7 +38,7 @@ describe('ProductController', () => {
 
       const result = await controller.getAllProducts();
 
-      expect(result).toEqual(products);
+      expect(result.getValue()).toEqual(products);
       expect(service.getProducts).toHaveBeenCalled();
     });
 
@@ -65,7 +65,7 @@ describe('ProductController', () => {
 
       const result = await controller.getProductById('1');
 
-      expect(result).toEqual(product);
+      expect(result.getValue()).toEqual(product);
       expect(service.getProductById).toHaveBeenCalledWith('1');
     });
 

@@ -20,7 +20,7 @@ export class ProductController {
       throw new BadRequestException(result.getError());
     }
 
-    return result.getValue();
+    return result;
   }
 
   @Get(':id')
@@ -31,6 +31,6 @@ export class ProductController {
       throw new NotFoundException(result.getError());
     }
 
-    return result.getValue();
+    return result;
   }
 }
