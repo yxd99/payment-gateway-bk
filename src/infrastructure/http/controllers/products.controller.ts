@@ -4,17 +4,19 @@ import {
   Param,
   NotFoundException,
   BadRequestException,
+  Query,
 } from '@nestjs/common';
 
 import { ProductService } from '@app/services/products.service';
+import { PaginationDto } from '@infrastructure/http/dto/pagination.dto';
 
 @Controller('products')
 export class ProductController {
   constructor(private readonly productService: ProductService) {}
 
   @Get()
-  async getAllProducts() {
-    const result = await this.productService.getProducts();
+  async getAllProducts(@Query() pagination: PaginationDto) {
+    const result = await this.productService.getProducts(pagination);
 
     if (!result.isSuccess) {
       throw new BadRequestException(result.getError());

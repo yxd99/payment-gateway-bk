@@ -36,7 +36,7 @@ describe('ProductController', () => {
       ];
       service.getProducts = jest.fn().mockResolvedValue(Result.ok(products));
 
-      const result = await controller.getAllProducts();
+      const result = await controller.getAllProducts({ page: 1, size: 15 });
 
       expect(result.getValue()).toEqual(products);
       expect(service.getProducts).toHaveBeenCalled();
@@ -45,7 +45,9 @@ describe('ProductController', () => {
     it('should throw an error if an error occurs', async () => {
       service.getProducts = jest.fn().mockResolvedValue(Result.fail('Error'));
 
-      await expect(controller.getAllProducts()).rejects.toThrow('Error');
+      await expect(
+        controller.getAllProducts({ page: 1, size: 15 }),
+      ).rejects.toThrow('Error');
     });
   });
 
