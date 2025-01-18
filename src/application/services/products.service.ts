@@ -3,6 +3,7 @@ import { Inject, Injectable } from '@nestjs/common';
 import { Result } from '@app/common/result';
 import { ProductRepository } from '@app/ports/outbound/product.repository';
 import { Product } from '@domain/entities/product.entity';
+import { PaginationDto } from '@infrastructure/http/dto/pagination.dto';
 
 @Injectable()
 export class ProductService {
@@ -11,9 +12,9 @@ export class ProductService {
     private readonly productRepository: ProductRepository,
   ) {}
 
-  async getProducts(): Promise<Result<Product[]>> {
+  async getProducts(pagination: PaginationDto): Promise<Result<Product[]>> {
     try {
-      const products = await this.productRepository.findAll();
+      const products = await this.productRepository.findAll(pagination);
       return Result.ok(products);
     } catch {
       return Result.fail('Error fetching products');

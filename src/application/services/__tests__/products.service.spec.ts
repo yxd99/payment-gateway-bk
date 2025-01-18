@@ -37,7 +37,7 @@ describe('ProductService', () => {
       ];
       repository.findAll = jest.fn().mockResolvedValue(products);
 
-      const result = await service.getProducts();
+      const result = await service.getProducts({ size: 15, page: 1 });
 
       expect(result.isSuccess).toBe(true);
       expect(result.getValue()).toEqual(products);
@@ -54,7 +54,7 @@ describe('ProductService', () => {
         .fn()
         .mockRejectedValue(new Error('Error fetching products'));
 
-      const result = await service.getProducts();
+      const result = await service.getProducts({ size: 15, page: 1 });
 
       expect(result.isSuccess).toBe(false);
       expect(result.getError()).toEqual('Error fetching products');
