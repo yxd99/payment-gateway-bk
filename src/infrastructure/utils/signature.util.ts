@@ -1,3 +1,5 @@
+import crypto from 'node:crypto';
+
 import { envs } from '@infrastructure/config/envs';
 
 interface SignaturePayload {
