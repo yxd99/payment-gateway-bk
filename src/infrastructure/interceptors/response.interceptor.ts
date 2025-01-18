@@ -32,6 +32,8 @@ export class ResponseInterceptor implements NestInterceptor {
         return result;
       }),
       catchError((error) => {
+        console.log({ error });
+
         const response = {
           code: error.status,
           name: getReasonPhrase(error.status),

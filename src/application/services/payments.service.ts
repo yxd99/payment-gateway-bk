@@ -1,3 +1,5 @@
+import { randomUUID } from 'crypto';
+
 import { Inject, Injectable, Logger } from '@nestjs/common';
 
 import { Result } from '@app/common/result';
@@ -28,7 +30,8 @@ export class PaymentsService {
         return Result.fail('Product not found');
       }
       const [expMonth, expYear] = payload.cardDetails.expirationDate.split('/');
-      const reference = crypto.randomUUID();
+      const reference = randomUUID();
+
       const tokenCard = await this.paymentApiRepository.tokenizeCard({
         expMonth,
         expYear,
