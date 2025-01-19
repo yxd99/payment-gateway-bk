@@ -27,7 +27,7 @@ export class PaymentORM {
   @Column({ type: 'text', name: 'reference' })
   reference: string;
 
-  @ManyToOne(() => ProductORM)
+  @ManyToOne(() => ProductORM, { eager: true })
   @JoinColumn({ name: 'product_id' })
   product: ProductORM;
 
