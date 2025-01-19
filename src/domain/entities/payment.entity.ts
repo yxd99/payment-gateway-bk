@@ -8,6 +8,12 @@ interface PaymentProps {
   createdAt: Date;
   reference: string;
   customerEmail: string;
+  status: string;
+  address: string;
+  city: string;
+  phone: string;
+  state: string;
+  productQuantity: number;
 }
 
 export class Payment {
@@ -25,6 +31,18 @@ export class Payment {
 
   public customerEmail: string;
 
+  public status: string;
+
+  public address: string;
+
+  public city: string;
+
+  public phone: string;
+
+  public state: string;
+
+  public productQuantity: number;
+
   constructor({
     id,
     product,
@@ -33,6 +51,12 @@ export class Payment {
     createdAt,
     reference,
     customerEmail,
+    status = 'PENDING',
+    address,
+    city,
+    phone,
+    state,
+    productQuantity,
   }: PaymentProps) {
     this.id = id;
     this.product = product;
@@ -41,5 +65,11 @@ export class Payment {
     this.transactionId = transactionId;
     this.createdAt = createdAt;
     this.customerEmail = customerEmail;
+    this.status = status;
+    this.address = address;
+    this.city = city;
+    this.phone = phone;
+    this.state = state;
+    this.productQuantity = productQuantity;
   }
 }

@@ -1,4 +1,4 @@
-import crypto from 'node:crypto';
+import { subtle } from 'crypto';
 
 import { envs } from '@infrastructure/config/envs';
 
@@ -15,7 +15,7 @@ export async function generateSignature({
 }: SignaturePayload): Promise<string> {
   const st = `${reference}${amount}${currency}${envs.PAYMENT_API_SIGNATURE}`;
   const encondedText = new TextEncoder().encode(st);
-  const hashBuffer = await crypto.subtle.digest('SHA-256', encondedText);
+  const hashBuffer = await subtle.digest('SHA-256', encondedText);
   const hashArray = Array.from(new Uint8Array(hashBuffer));
   const hashHex = hashArray
     .map((b) => b.toString(16).padStart(2, '0'))
