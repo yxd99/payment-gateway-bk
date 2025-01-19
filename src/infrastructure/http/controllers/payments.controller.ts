@@ -15,11 +15,15 @@ import {
 } from '@nestjs/swagger';
 
 import { PaymentsService } from '@app/services/payments.service';
-import { badRequestSchema } from '@infrastructure/http/docs/payments/bad-request.schema';
+import {
+  badRequestForGetPaymentByCustomerEmailSchema,
+  badRequestSchema,
+} from '@infrastructure/http/docs/payments/bad-request.schema';
 import { createPaymentSchema } from '@infrastructure/http/docs/payments/created.schema';
 import { notFoundSchema } from '@infrastructure/http/docs/payments/not-found.schema';
 import {
   okGenerateAcceptanceTokenSchema,
+  okPaymentByEmailSchema,
   okPaymentByIdSchema,
 } from '@infrastructure/http/docs/payments/ok.schema';
 import { GetPaymentsDto } from '@infrastructure/http/dto/get-payments.dto';
@@ -48,6 +52,8 @@ export class PaymentsController {
     return result;
   }
 
+  @ApiOkResponse(okPaymentByEmailSchema)
+  @ApiBadRequestResponse(badRequestForGetPaymentByCustomerEmailSchema)
   @Get('my-payments/:email')
   async getMyPayments(
     @Param() getPaymentsDto: GetPaymentsDto,

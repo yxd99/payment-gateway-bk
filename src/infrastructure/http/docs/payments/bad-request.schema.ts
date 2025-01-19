@@ -40,3 +40,27 @@ export const badRequestSchema: ApiResponseOptions = {
     },
   },
 };
+
+export const badRequestForGetPaymentByCustomerEmailSchema: ApiResponseOptions =
+  {
+    description: 'Get payment by customer email bad request',
+    schema: {
+      properties: {
+        code: {
+          type: 'number',
+          description: 'Status code',
+          example: StatusCodes.BAD_REQUEST,
+        },
+        name: {
+          type: 'string',
+          description: 'Status name',
+          example: getReasonPhrase(StatusCodes.BAD_REQUEST),
+        },
+        data: {
+          type: 'array',
+          description: 'Payment data',
+          example: ['email must be an email'],
+        },
+      },
+    },
+  };

@@ -291,13 +291,10 @@ describe('PaymentsController', () => {
       },
     };
 
-    // Transformamos el objeto plano en una instancia de CreatePaymentDto
     const dto = plainToClass(CreatePaymentDto, mockInput);
 
-    // Validamos que deliveryInfo sea una instancia de DeliveryInfoDto
     expect(dto.deliveryInfo).toBeInstanceOf(DeliveryInfoDto);
 
-    // Aseguramos que las propiedades de deliveryInfo sean correctas
     expect(dto.deliveryInfo.address).toBe('123 Main St');
     expect(dto.deliveryInfo.city).toBe('Bogotá');
     expect(dto.deliveryInfo.phone).toBe('+573001234567');
