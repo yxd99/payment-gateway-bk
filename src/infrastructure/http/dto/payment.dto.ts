@@ -1,15 +1,17 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { Type } from 'class-transformer';
 import {
   IsCreditCard,
   IsEmail,
   IsNotEmpty,
   IsNumber,
-  IsObject,
   IsString,
   IsUUID,
   Matches,
   Min,
 } from 'class-validator';
+
+import { DeliveryInfoDto } from './delivery-info.dto';
 
 export class CreatePaymentDto {
   @ApiProperty()
@@ -66,11 +68,6 @@ export class CreatePaymentDto {
 
   @ApiProperty()
   @IsNotEmpty()
-  @IsObject()
-  deliveryInfo: {
-    address: string;
-    city: string;
-    phone: string;
-    state: string;
-  };
+  @Type(() => DeliveryInfoDto)
+  deliveryInfo: DeliveryInfoDto;
 }
