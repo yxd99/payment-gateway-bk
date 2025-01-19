@@ -16,11 +16,9 @@ export const notFoundSchema: ApiResponseOptions = {
         example: getReasonPhrase(StatusCodes.NOT_FOUND),
       },
       data: {
-        type: 'object',
-        description: 'Payment data',
-        example: {
-          /** */
-        },
+        type: 'string',
+        description: 'Payment not found',
+        example: 'Payment not found',
       },
     },
   },
