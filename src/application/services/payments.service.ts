@@ -9,6 +9,7 @@ import { PaymentApiRepository } from '@app/ports/outbound/api-payment.repository
 import { PaymentRepository } from '@app/ports/outbound/payments.repository';
 import { ProductRepository } from '@app/ports/outbound/product.repository';
 import { Payment } from '@domain/entities/payment.entity';
+import { PaginationDto } from '@infrastructure/http/dto/pagination.dto';
 
 @Injectable()
 export class PaymentsService {
@@ -31,6 +32,7 @@ export class PaymentsService {
       }
       const [expMonth, expYear] = payload.cardDetails.expirationDate.split('/');
       const reference = randomUUID();
+      const amount = product.price * payload.productQuantity;
 
       const tokenCard = await this.paymentApiRepository.tokenizeCard({
         expMonth,
@@ -41,7 +43,7 @@ export class PaymentsService {
       });
       const transaction = await this.paymentApiRepository.createTransaction({
         reference,
-        amount: product.price,
+        amount,
         token: tokenCard,
         installments: payload.installments,
         customerEmail: payload.email,
@@ -51,7 +53,7 @@ export class PaymentsService {
       const payment = new Payment({
         product,
         reference,
-        amount: product.price,
+        amount,
         transactionId: transaction.data.id,
         createdAt: new Date(),
         customerEmail: payload.email,
@@ -98,6 +100,21 @@ export class PaymentsService {
         status,
         statusMessage,
       });
+    } catch (error) {
+      return Result.fail(error);
+    }
+  }
+
+  async getMyPayments(
+    email: string,
+    pagination: PaginationDto,
+  ): Promise<Result<Payment[]>> {
+    try {
+      const payments = await this.paymentRepository.findByCustomerEmail(
+        email,
+        pagination,
+      );
+      return Result.ok(payments);
     } catch (error) {
       return Result.fail(error);
     }

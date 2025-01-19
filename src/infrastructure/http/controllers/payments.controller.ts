@@ -5,6 +5,7 @@ import {
   NotFoundException,
   Param,
   Post,
+  Query,
 } from '@nestjs/common';
 import {
   ApiBadRequestResponse,
@@ -21,6 +22,8 @@ import {
   okGenerateAcceptanceTokenSchema,
   okPaymentByIdSchema,
 } from '@infrastructure/http/docs/payments/ok.schema';
+import { GetPaymentsDto } from '@infrastructure/http/dto/get-payments.dto';
+import { PaginationDto } from '@infrastructure/http/dto/pagination.dto';
 import { CreatePaymentDto } from '@infrastructure/http/dto/payment.dto';
 
 @Controller('payments')
@@ -43,6 +46,15 @@ export class PaymentsController {
     }
 
     return result;
+  }
+
+  @Get('my-payments/:email')
+  async getMyPayments(
+    @Param() getPaymentsDto: GetPaymentsDto,
+    @Query() pagination: PaginationDto,
+  ) {
+    const { email } = getPaymentsDto;
+    return this.paymentsService.getMyPayments(email, pagination);
   }
 
   @ApiBody({ type: CreatePaymentDto })
