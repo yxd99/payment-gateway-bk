@@ -73,7 +73,7 @@ describe('PaymentsController', () => {
         address: 'cra 1 cll 1 ',
         city: 'SantaMarta',
         phone: '3154100000',
-        state: 'Atlantico',
+        department: 'Atlantico',
         productQuantity: 1,
       });
       const response = {
@@ -124,7 +124,7 @@ describe('PaymentsController', () => {
         address: 'cra 1 cll 1 ',
         city: 'SantaMarta',
         phone: '3154100000',
-        state: 'Atlantico',
+        department: 'Atlantico',
         productQuantity: 1,
       });
       jest
@@ -146,7 +146,7 @@ describe('PaymentsController', () => {
           address: 'cra 1 cll 1 ',
           city: 'SantaMarta',
           phone: '3154100000',
-          state: 'Atlantico',
+          department: 'Atlantico',
         },
       });
 
@@ -185,7 +185,7 @@ describe('PaymentsController', () => {
         address: '123 Main St',
         city: 'Bogotá',
         phone: '+573001234567',
-        state: 'Cundinamarca',
+        department: 'Cundinamarca',
       },
     };
 
@@ -199,7 +199,7 @@ describe('PaymentsController', () => {
       address: 'cra 1 cll 1 ',
       city: 'SantaMarta',
       phone: '3154120000',
-      state: 'Atlantico',
+      department: 'Atlantico',
       productQuantity: 1,
       product: new Product(
         'dc4ac251-b668-4a78-95d4-558e84deb064',
@@ -237,7 +237,7 @@ describe('PaymentsController', () => {
         address: mockDto.deliveryInfo.address,
         city: mockDto.deliveryInfo.city,
         phone: mockDto.deliveryInfo.phone,
-        state: mockDto.deliveryInfo.state,
+        department: mockDto.deliveryInfo.department,
       },
     });
   });
@@ -258,7 +258,7 @@ describe('PaymentsController', () => {
         address: '123 Main St',
         city: 'Bogotá',
         phone: '+573001234567',
-        state: 'Cundinamarca',
+        department: 'Cundinamarca',
       },
     };
 
@@ -287,7 +287,7 @@ describe('PaymentsController', () => {
         address: '123 Main St',
         city: 'Bogotá',
         phone: '+573001234567',
-        state: 'Cundinamarca',
+        department: 'Cundinamarca',
       },
     };
 
@@ -298,6 +298,6 @@ describe('PaymentsController', () => {
     expect(dto.deliveryInfo.address).toBe('123 Main St');
     expect(dto.deliveryInfo.city).toBe('Bogotá');
     expect(dto.deliveryInfo.phone).toBe('+573001234567');
-    expect(dto.deliveryInfo.state).toBe('Cundinamarca');
+    expect(dto.deliveryInfo.department).toBe('Cundinamarca');
   });
 });

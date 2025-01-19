@@ -19,5 +19,5 @@ export class DeliveryInfoDto {
 
   @ApiProperty()
   @IsString()
-  state: string;
+  department: string;
 }

@@ -109,7 +109,7 @@ export const okPaymentByEmailSchema: ApiResponseOptions = {
           address: 'cra 1 cll 1 ',
           city: 'SantaMarta',
           phone: '33344445566',
-          state: 'Atlantico',
+          department: 'Atlantico',
           productQuantity: 1,
         },
       },

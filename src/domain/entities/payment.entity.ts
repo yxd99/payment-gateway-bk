@@ -12,7 +12,7 @@ interface PaymentProps {
   address: string;
   city: string;
   phone: string;
-  state: string;
+  department: string;
   productQuantity: number;
 }
 
@@ -39,7 +39,7 @@ export class Payment {
 
   public phone: string;
 
-  public state: string;
+  public department: string;
 
   public productQuantity: number;
 
@@ -55,7 +55,7 @@ export class Payment {
     address,
     city,
     phone,
-    state,
+    department,
     productQuantity,
   }: PaymentProps) {
     this.id = id;
@@ -69,7 +69,7 @@ export class Payment {
     this.address = address;
     this.city = city;
     this.phone = phone;
-    this.state = state;
+    this.department = department;
     this.productQuantity = productQuantity;
   }
 }

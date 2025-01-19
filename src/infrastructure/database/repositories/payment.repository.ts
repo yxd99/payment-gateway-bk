@@ -26,7 +26,7 @@ export class PaymentRepositoryImpl implements PaymentRepository {
     paymentORM.address = payment.address;
     paymentORM.city = payment.city;
     paymentORM.phone = payment.phone;
-    paymentORM.state = payment.state;
+    paymentORM.department = payment.department;
     paymentORM.productQuantity = payment.productQuantity;
     paymentORM.product = payment.product as ProductORM;
 

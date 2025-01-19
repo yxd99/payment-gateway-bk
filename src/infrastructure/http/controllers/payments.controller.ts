@@ -85,7 +85,7 @@ export class PaymentsController {
         address: createPaymentDto.deliveryInfo.address,
         city: createPaymentDto.deliveryInfo.city,
         phone: createPaymentDto.deliveryInfo.phone,
-        state: createPaymentDto.deliveryInfo.state,
+        department: createPaymentDto.deliveryInfo.department,
       },
     });
     return result;

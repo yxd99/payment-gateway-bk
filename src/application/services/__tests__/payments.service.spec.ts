@@ -92,7 +92,7 @@ describe('PaymentsService', () => {
           address: 'cra 1 cll 1 ',
           city: 'SantaMarta',
           phone: '3154100000',
-          state: 'Atlantico',
+          department: 'Atlantico',
         },
       });
       expect(response.isSuccess).toBe(true);
@@ -119,7 +119,7 @@ describe('PaymentsService', () => {
           address: 'cra 1 cll 1 ',
           city: 'SantaMarta',
           phone: '3154100000',
-          state: 'Atlantico',
+          department: 'Atlantico',
         },
       });
       expect(response.isSuccess).toBe(false);
@@ -151,7 +151,7 @@ describe('PaymentsService', () => {
           address: 'cra 1 cll 1 ',
           city: 'SantaMarta',
           phone: '3154100000',
-          state: 'Atlantico',
+          department: 'Atlantico',
         },
       });
       expect(response.isSuccess).toBe(false);
@@ -184,7 +184,7 @@ describe('PaymentsService', () => {
           address: 'cra 1 cll 1 ',
           city: 'SantaMarta',
           phone: '3154100000',
-          state: 'Atlantico',
+          department: 'Atlantico',
         },
       });
       expect(response.isSuccess).toBe(false);
@@ -224,7 +224,7 @@ describe('PaymentsService', () => {
           address: 'cra 1 cll 1 ',
           city: 'SantaMarta',
           phone: '3154100000',
-          state: 'Atlantico',
+          department: 'Atlantico',
         },
       });
       expect(response.isSuccess).toBe(false);
@@ -278,7 +278,7 @@ describe('PaymentsService', () => {
         address: 'cra 1 cll 1 ',
         city: 'SantaMarta',
         phone: '3154100000',
-        state: 'Atlantico',
+        department: 'Atlantico',
         productQuantity: 1,
       });
       const transaction = {

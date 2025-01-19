@@ -31,7 +31,7 @@ export const createPaymentSchema: ApiResponseOptions = {
             address: 'cra 1 cll 1 ',
             city: 'SantaMarta',
             phone: '3154120000',
-            state: 'Atlantico',
+            department: 'Atlantico',
             productQuantity: 1,
             product: {
               id: 'dc4ac251-b668-4a78-95d4-558e84deb064',

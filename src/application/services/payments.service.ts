@@ -50,18 +50,21 @@ export class PaymentsService {
         acceptanceToken: payload.acceptanceToken,
         acceptPersonalAuth: payload.acceptPersonalAuth,
       });
+      const {
+        data: { status },
+      } = await this.paymentApiRepository.getTransaction(transaction.data.id);
       const payment = new Payment({
         product,
         reference,
         amount,
+        status,
         transactionId: transaction.data.id,
         createdAt: new Date(),
         customerEmail: payload.email,
         city: payload.deliveryInfo.city,
         address: payload.deliveryInfo.address,
         phone: payload.deliveryInfo.phone,
-        state: payload.deliveryInfo.state,
-        status: transaction.data.status,
+        department: payload.deliveryInfo.department,
         productQuantity: payload.productQuantity,
       });
 
