@@ -4,9 +4,11 @@ import {
   IsEmail,
   IsNotEmpty,
   IsNumber,
+  IsObject,
   IsString,
   IsUUID,
   Matches,
+  Min,
 } from 'class-validator';
 
 export class CreatePaymentDto {
@@ -56,4 +58,19 @@ export class CreatePaymentDto {
   @IsNotEmpty()
   @IsString()
   acceptPersonalAuth: string;
+
+  @ApiProperty()
+  @IsNumber()
+  @Min(1)
+  productQuantity: number;
+
+  @ApiProperty()
+  @IsNotEmpty()
+  @IsObject()
+  deliveryInfo: {
+    address: string;
+    city: string;
+    phone: string;
+    state: string;
+  };
 }

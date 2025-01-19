@@ -62,6 +62,13 @@ export class PaymentsController {
       productId: createPaymentDto.productId,
       acceptanceToken: createPaymentDto.acceptanceToken,
       acceptPersonalAuth: createPaymentDto.acceptPersonalAuth,
+      productQuantity: createPaymentDto.productQuantity,
+      deliveryInfo: {
+        address: createPaymentDto.deliveryInfo.address,
+        city: createPaymentDto.deliveryInfo.city,
+        phone: createPaymentDto.deliveryInfo.phone,
+        state: createPaymentDto.deliveryInfo.state,
+      },
     });
     return result;
   }

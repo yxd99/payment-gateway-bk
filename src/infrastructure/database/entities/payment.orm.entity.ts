@@ -31,6 +31,24 @@ export class PaymentORM {
   @JoinColumn({ name: 'product_id' })
   product: ProductORM;
 
+  @Column({ type: 'varchar', name: 'status' })
+  status: string;
+
+  @Column({ type: 'varchar', name: 'address' })
+  address: string;
+
+  @Column({ type: 'varchar', name: 'city' })
+  city: string;
+
+  @Column({ type: 'varchar', name: 'phone' })
+  phone: string;
+
+  @Column({ type: 'varchar', name: 'state' })
+  state: string;
+
+  @Column({ type: 'int', name: 'product_quantity' })
+  productQuantity: number;
+
   @Column({
     type: 'timestamp',
     name: 'created_at',
@@ -47,6 +65,12 @@ export class PaymentORM {
       createdAt: payment.createdAt,
       reference: payment.reference,
       customerEmail: payment.customerEmail,
+      status: payment.status,
+      address: payment.address,
+      city: payment.city,
+      phone: payment.phone,
+      state: payment.state,
+      productQuantity: payment.productQuantity,
     });
   }
 
@@ -55,6 +79,12 @@ export class PaymentORM {
     paymentORM.transactionId = payment.transactionId;
     paymentORM.amount = payment.amount;
     paymentORM.reference = payment.reference;
+    paymentORM.address = payment.address;
+    paymentORM.city = payment.city;
+    paymentORM.phone = payment.phone;
+    paymentORM.state = payment.state;
+    paymentORM.customerEmail = payment.customerEmail;
+    paymentORM.status = payment.status;
 
     const productORM = new ProductORM();
     productORM.id = payment.product.id;

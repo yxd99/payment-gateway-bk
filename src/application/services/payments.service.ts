@@ -55,7 +55,14 @@ export class PaymentsService {
         transactionId: transaction.data.id,
         createdAt: new Date(),
         customerEmail: payload.email,
+        city: payload.deliveryInfo.city,
+        address: payload.deliveryInfo.address,
+        phone: payload.deliveryInfo.phone,
+        state: payload.deliveryInfo.state,
+        status: transaction.data.status,
+        productQuantity: payload.productQuantity,
       });
+      console.log({ payment });
       const paymentSave = await this.paymentRepository.create(payment);
       return Result.ok(paymentSave);
     } catch (error) {

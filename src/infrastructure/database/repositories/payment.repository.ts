@@ -5,6 +5,7 @@ import { Repository } from 'typeorm';
 import { PaymentRepository } from '@app/ports/outbound/payments.repository';
 import { Payment } from '@domain/entities/payment.entity';
 import { PaymentORM } from '@infrastructure/database/entities/payment.orm.entity';
+import { ProductORM } from '@infrastructure/database/entities/product.orm.entity';
 
 @Injectable()
 export class PaymentRepositoryImpl implements PaymentRepository {
@@ -20,6 +21,14 @@ export class PaymentRepositoryImpl implements PaymentRepository {
     paymentORM.reference = payment.reference;
     paymentORM.transactionId = payment.transactionId;
     paymentORM.customerEmail = payment.customerEmail;
+    paymentORM.status = payment.status;
+    paymentORM.address = payment.address;
+    paymentORM.city = payment.city;
+    paymentORM.phone = payment.phone;
+    paymentORM.state = payment.state;
+    paymentORM.productQuantity = payment.productQuantity;
+    paymentORM.product = payment.product as ProductORM;
+
     return this.paymentRepository.save(paymentORM);
   }
 
