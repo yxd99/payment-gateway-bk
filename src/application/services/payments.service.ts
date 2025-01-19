@@ -10,6 +10,7 @@ import { PaymentRepository } from '@app/ports/outbound/payments.repository';
 import { ProductRepository } from '@app/ports/outbound/product.repository';
 import { Payment } from '@domain/entities/payment.entity';
 import { PaginationDto } from '@infrastructure/http/dto/pagination.dto';
+import { sleep } from '@infrastructure/utils/sleep.util';
 
 @Injectable()
 export class PaymentsService {
@@ -50,6 +51,7 @@ export class PaymentsService {
         acceptanceToken: payload.acceptanceToken,
         acceptPersonalAuth: payload.acceptPersonalAuth,
       });
+      await sleep(2);
       const {
         data: { status },
       } = await this.paymentApiRepository.getTransaction(transaction.data.id);
