@@ -51,7 +51,7 @@ export class Payment {
     createdAt,
     reference,
     customerEmail,
-    status = 'PENDING',
+    status,
     address,
     city,
     phone,

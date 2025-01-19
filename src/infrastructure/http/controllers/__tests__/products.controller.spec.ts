@@ -1,9 +1,12 @@
 import { Test, TestingModule } from '@nestjs/testing';
+import { plainToClass } from 'class-transformer';
+import { validate } from 'class-validator';
 
 import { Result } from '@app/common/result';
 import { ProductService } from '@app/services/products.service';
 import { Product } from '@domain/entities/product.entity';
 import { ProductController } from '@infrastructure/http/controllers/products.controller';
+import { PaginationDto } from '@infrastructure/http/dto/pagination.dto';
 
 const mockProductService = {
   getProducts: jest.fn(),
@@ -80,5 +83,55 @@ describe('ProductController', () => {
         'Product not found',
       );
     });
+  });
+});
+
+describe('PaginationDto', () => {
+  it('should pass validation with default values', async () => {
+    const dto = new PaginationDto();
+    const errors = await validate(dto);
+
+    expect(errors).toHaveLength(0);
+    expect(dto.page).toBe(1);
+    expect(dto.size).toBe(15);
+  });
+
+  it('should transform string query params to numbers', async () => {
+    const plainObject = { page: '2', size: '20' };
+    const dto = plainToClass(PaginationDto, plainObject);
+
+    expect(dto.page).toBe(2);
+    expect(dto.size).toBe(20);
+  });
+
+  it('should fail validation if page is less than 1', async () => {
+    const dto = new PaginationDto();
+    dto.page = 0;
+
+    const errors = await validate(dto);
+
+    expect(errors).toHaveLength(1);
+    expect(errors[0].constraints).toHaveProperty('min');
+  });
+
+  it('should fail validation if size is less than 1', async () => {
+    const dto = new PaginationDto();
+    dto.size = 0;
+
+    const errors = await validate(dto);
+
+    expect(errors).toHaveLength(1);
+    expect(errors[0].constraints).toHaveProperty('min');
+  });
+
+  it('should allow optional parameters', async () => {
+    const plainObject = {};
+    const dto = plainToClass(PaginationDto, plainObject);
+
+    const errors = await validate(dto);
+
+    expect(errors).toHaveLength(0);
+    expect(dto.page).toBe(1);
+    expect(dto.size).toBe(15);
   });
 });

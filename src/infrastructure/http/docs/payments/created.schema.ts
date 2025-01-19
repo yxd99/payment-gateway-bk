@@ -30,7 +30,7 @@ export const createPaymentSchema: ApiResponseOptions = {
             status: 'PENDING',
             address: 'cra 1 cll 1 ',
             city: 'SantaMarta',
-            phone: '33344445566',
+            phone: '3154120000',
             state: 'Atlantico',
             productQuantity: 1,
             product: {

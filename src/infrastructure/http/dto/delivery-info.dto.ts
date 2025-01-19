@@ -18,5 +18,6 @@ export class DeliveryInfoDto {
   phone: string;
 
   @ApiProperty()
+  @IsString()
   state: string;
 }

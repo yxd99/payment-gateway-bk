@@ -87,6 +87,13 @@ describe('PaymentsService', () => {
         productId: '1',
         acceptanceToken: '123',
         acceptPersonalAuth: '123',
+        productQuantity: 1,
+        deliveryInfo: {
+          address: 'cra 1 cll 1 ',
+          city: 'SantaMarta',
+          phone: '3154100000',
+          state: 'Atlantico',
+        },
       });
       expect(response.isSuccess).toBe(true);
       expect(response.getValue()).toEqual(payment);
@@ -107,6 +114,13 @@ describe('PaymentsService', () => {
         productId: '1',
         acceptanceToken: '123',
         acceptPersonalAuth: '123',
+        productQuantity: 1,
+        deliveryInfo: {
+          address: 'cra 1 cll 1 ',
+          city: 'SantaMarta',
+          phone: '3154100000',
+          state: 'Atlantico',
+        },
       });
       expect(response.isSuccess).toBe(false);
       expect(response.getError()).toEqual('Product not found');
@@ -132,6 +146,13 @@ describe('PaymentsService', () => {
         productId: '1',
         acceptanceToken: '123',
         acceptPersonalAuth: '123',
+        productQuantity: 1,
+        deliveryInfo: {
+          address: 'cra 1 cll 1 ',
+          city: 'SantaMarta',
+          phone: '3154100000',
+          state: 'Atlantico',
+        },
       });
       expect(response.isSuccess).toBe(false);
       expect(response.getError()).toEqual('error');
@@ -158,6 +179,13 @@ describe('PaymentsService', () => {
         productId: '1',
         acceptanceToken: '123',
         acceptPersonalAuth: '123',
+        productQuantity: 1,
+        deliveryInfo: {
+          address: 'cra 1 cll 1 ',
+          city: 'SantaMarta',
+          phone: '3154100000',
+          state: 'Atlantico',
+        },
       });
       expect(response.isSuccess).toBe(false);
       expect(response.getError()).toEqual('error');
@@ -191,6 +219,13 @@ describe('PaymentsService', () => {
         productId: '1',
         acceptanceToken: '123',
         acceptPersonalAuth: '123',
+        productQuantity: 1,
+        deliveryInfo: {
+          address: 'cra 1 cll 1 ',
+          city: 'SantaMarta',
+          phone: '3154100000',
+          state: 'Atlantico',
+        },
       });
       expect(response.isSuccess).toBe(false);
       expect(response.getError()).toEqual('error');
@@ -239,6 +274,12 @@ describe('PaymentsService', () => {
         createdAt: new Date(),
         product,
         transactionId: 'transactionId',
+        status: 'pending',
+        address: 'cra 1 cll 1 ',
+        city: 'SantaMarta',
+        phone: '3154100000',
+        state: 'Atlantico',
+        productQuantity: 1,
       });
       const transaction = {
         data: {

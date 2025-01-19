@@ -62,7 +62,7 @@ export class PaymentsService {
         status: transaction.data.status,
         productQuantity: payload.productQuantity,
       });
-      console.log({ payment });
+
       const paymentSave = await this.paymentRepository.create(payment);
       return Result.ok(paymentSave);
     } catch (error) {
