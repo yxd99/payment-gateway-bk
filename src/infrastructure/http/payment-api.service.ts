@@ -56,6 +56,7 @@ export class PaymentApiService implements PaymentApiRepository {
         currency,
         reference: payload.reference,
       });
+
       const response =
         await this.httpClientService.post<ApiPaymentTransactionResponse>(
           `${envs.PAYMENT_API_URL}/transactions`,
@@ -85,7 +86,6 @@ export class PaymentApiService implements PaymentApiRepository {
           `Transaction declined: ${response.data.status_message}`,
         );
       }
-
       return response;
     } catch (error) {
       throw error.response.data;

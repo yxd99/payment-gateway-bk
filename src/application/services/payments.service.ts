@@ -52,7 +52,7 @@ export class PaymentsService {
         product,
         reference,
         amount: product.price,
-        transactionId: String(transaction.data.id),
+        transactionId: transaction.data.id,
         createdAt: new Date(),
         customerEmail: payload.email,
       });

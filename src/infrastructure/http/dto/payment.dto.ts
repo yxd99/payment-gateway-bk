@@ -17,10 +17,12 @@ export class CreatePaymentDto {
 
   @ApiProperty()
   @IsNotEmpty()
+  @IsString()
   cvc: string;
 
   @ApiProperty()
   @IsNotEmpty()
+  @IsString()
   @Matches(/^(0[1-9]|1[0-2])\/\d{2}$/, {
     message: 'invalid format date, must be MM/YY',
   })

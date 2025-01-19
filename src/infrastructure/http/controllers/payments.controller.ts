@@ -63,7 +63,6 @@ export class PaymentsController {
       acceptanceToken: createPaymentDto.acceptanceToken,
       acceptPersonalAuth: createPaymentDto.acceptPersonalAuth,
     });
-
     return result;
   }
 }
