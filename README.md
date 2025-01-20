@@ -1,4 +1,4 @@
-![Coverage](./coverage/coverage-badge.svg)
+[![Coverage](./coverage/coverage-badge.svg)](https://github.com/yxd99/payment-gateway-bk/actions)
 
 > [!IMPORTANT]  
 > Project is deployed [here](https://payment-gateway-bk.onrender.com/api)
