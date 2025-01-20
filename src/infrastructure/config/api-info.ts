@@ -7,6 +7,10 @@ export const PREFIX = 'api';
 export const { PORT } = envs;
 export const SERVERS = [
   {
+    host: `https://payment-gateway-bk.onrender.com`,
+    description: 'Development server',
+  },
+  {
     host: `http://localhost:${PORT}/api`,
     description: 'Local',
   },
