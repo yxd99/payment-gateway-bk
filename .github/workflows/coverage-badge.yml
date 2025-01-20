@@ -1,34 +1,37 @@
-name: Generate Coverage Badge
+name: Coverage Badge
 
-on: [push]
+on:
+  push:
+    branches:
+      - main
 
 jobs:
   coverage:
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
         with:
           node-version: '18'
 
       - name: Install dependencies
         run: npm install
 
-      - name: Run tests and generate coverage
-        run: npm run test:cov
+      - name: Run tests
+        run: npm run test -- --coverage
 
       - name: Generate coverage badge
-        uses: jaywcjlove/coverage-badges-cli@main
+        uses: tj-actions/coverage-badge-generator@v2
         with:
-          source: coverage/coverage-final.json
-          output: coverage/badges.svg
-          jsonPath: totals.percent_covered
+          coverage-file: ./coverage/coverage-summary.json
+          output-file: ./coverage/badge.svg
 
-      - name: Deploy badge
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Commit and push coverage badge
+        uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./coverage
+          commit_message: "ci: update coverage badge"
+          file_pattern: ./coverage/coverage-badge.svg
