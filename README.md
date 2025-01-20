@@ -1,3 +1,9 @@
+[![Coverage](https://yxd99.github.io/payment-gateway-bk/badges.svg)](https://github.com/yxd99/payment-gateway-bk/actions)
+
+> [!IMPORTANT]  
+> Project is deployed [here](https://payment-gateway-bk.onrender.com/api)
+> 
+
 # Payments API
 This project consists to manage payments, users, transactions, etc.
 
