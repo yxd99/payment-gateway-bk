@@ -12,7 +12,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: 'iron-alpine'
+          node-version: '18'
 
       - name: Install dependencies
         run: npm install
@@ -23,7 +23,7 @@ jobs:
       - name: Generate coverage badge
         uses: jaywcjlove/coverage-badges-cli@main
         with:
-          source: coverage/coverage-summary.json
+          source: coverage/coverage-final.json
           output: coverage/badges.svg
           jsonPath: totals.percent_covered
 
