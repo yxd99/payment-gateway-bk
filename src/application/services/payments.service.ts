@@ -51,7 +51,7 @@ export class PaymentsService {
         acceptanceToken: payload.acceptanceToken,
         acceptPersonalAuth: payload.acceptPersonalAuth,
       });
-      await sleep(2);
+      await sleep(6);
       const {
         data: { status },
       } = await this.paymentApiRepository.getTransaction(transaction.data.id);
