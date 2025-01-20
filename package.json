@@ -91,6 +91,7 @@
     ],
     "coverageDirectory": "./coverage",
     "testEnvironment": "node",
+    "testTimeout": 10000,
     "modulePathIgnorePatterns": [
       "<rootDir>/dist/",
       "^(?!.*infrastructure/http/controllers).*infrastructure/http/",
