@@ -4,48 +4,53 @@ export class AddDeliveryInfoToPayments1737253066652
   implements MigrationInterface
 {
   public async up(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.addColumns('payments', [
-      new TableColumn({
-        name: 'status',
-        type: 'varchar',
-        isNullable: true,
-      }),
-      new TableColumn({
-        name: 'address',
-        type: 'varchar',
-        isNullable: true,
-      }),
-      new TableColumn({
-        name: 'city',
-        type: 'varchar',
-        isNullable: true,
-      }),
-      new TableColumn({
-        name: 'phone',
-        type: 'varchar',
-        isNullable: true,
-      }),
-      new TableColumn({
-        name: 'department',
-        type: 'varchar',
-        isNullable: true,
-      }),
-      new TableColumn({
-        name: 'product_quantity',
-        type: 'int',
-        isNullable: true,
-      }),
-    ]);
+    const table = await queryRunner.getTable('payments');
+
+    const columnsToAdd = [
+      { name: 'status', type: 'varchar' },
+      { name: 'address', type: 'varchar' },
+      { name: 'city', type: 'varchar' },
+      { name: 'phone', type: 'varchar' },
+      { name: 'department', type: 'varchar' },
+      { name: 'product_quantity', type: 'int' },
+    ];
+
+    columnsToAdd.forEach(async (column) => {
+      const existingColumn = table.columns.find(
+        (col) => col.name === column.name,
+      );
+      if (!existingColumn) {
+        await queryRunner.addColumn(
+          'payments',
+          new TableColumn({
+            name: column.name,
+            type: column.type,
+            isNullable: true,
+          }),
+        );
+      }
+    });
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropColumns('payments', [
+    const table = await queryRunner.getTable('payments');
+
+    const columnsToDrop = [
       'status',
       'address',
       'city',
       'phone',
       'department',
       'product_quantity',
-    ]);
+    ];
+
+    columnsToDrop.forEach(async (columnName) => {
+      const existingColumn = table.columns.find(
+        (col) => col.name === columnName,
+      );
+      if (existingColumn) {
+        await queryRunner.dropColumn('payments', columnName);
+      }
+    });
   }
 }
