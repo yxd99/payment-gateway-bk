@@ -15,6 +15,6 @@ export interface CreateTransactionDto {
     address: string;
     city: string;
     phone: string;
-    state: string;
+    department: string;
   };
 }

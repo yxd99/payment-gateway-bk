@@ -27,7 +27,7 @@ export class PaymentORM {
   @Column({ type: 'text', name: 'reference' })
   reference: string;
 
-  @ManyToOne(() => ProductORM)
+  @ManyToOne(() => ProductORM, { eager: true })
   @JoinColumn({ name: 'product_id' })
   product: ProductORM;
 
@@ -43,8 +43,8 @@ export class PaymentORM {
   @Column({ type: 'varchar', name: 'phone' })
   phone: string;
 
-  @Column({ type: 'varchar', name: 'state' })
-  state: string;
+  @Column({ type: 'varchar', name: 'department' })
+  department: string;
 
   @Column({ type: 'int', name: 'product_quantity' })
   productQuantity: number;
@@ -69,7 +69,7 @@ export class PaymentORM {
       address: payment.address,
       city: payment.city,
       phone: payment.phone,
-      state: payment.state,
+      department: payment.department,
       productQuantity: payment.productQuantity,
     });
   }
@@ -82,7 +82,7 @@ export class PaymentORM {
     paymentORM.address = payment.address;
     paymentORM.city = payment.city;
     paymentORM.phone = payment.phone;
-    paymentORM.state = payment.state;
+    paymentORM.department = payment.department;
     paymentORM.customerEmail = payment.customerEmail;
     paymentORM.status = payment.status;
 

@@ -5,6 +5,7 @@ import {
   NotFoundException,
   Param,
   Post,
+  Query,
 } from '@nestjs/common';
 import {
   ApiBadRequestResponse,
@@ -14,13 +15,19 @@ import {
 } from '@nestjs/swagger';
 
 import { PaymentsService } from '@app/services/payments.service';
-import { badRequestSchema } from '@infrastructure/http/docs/payments/bad-request.schema';
+import {
+  badRequestForGetPaymentByCustomerEmailSchema,
+  badRequestSchema,
+} from '@infrastructure/http/docs/payments/bad-request.schema';
 import { createPaymentSchema } from '@infrastructure/http/docs/payments/created.schema';
 import { notFoundSchema } from '@infrastructure/http/docs/payments/not-found.schema';
 import {
   okGenerateAcceptanceTokenSchema,
+  okPaymentByEmailSchema,
   okPaymentByIdSchema,
 } from '@infrastructure/http/docs/payments/ok.schema';
+import { GetPaymentsDto } from '@infrastructure/http/dto/get-payments.dto';
+import { PaginationDto } from '@infrastructure/http/dto/pagination.dto';
 import { CreatePaymentDto } from '@infrastructure/http/dto/payment.dto';
 
 @Controller('payments')
@@ -45,6 +52,17 @@ export class PaymentsController {
     return result;
   }
 
+  @ApiOkResponse(okPaymentByEmailSchema)
+  @ApiBadRequestResponse(badRequestForGetPaymentByCustomerEmailSchema)
+  @Get('my-payments/:email')
+  async getMyPayments(
+    @Param() getPaymentsDto: GetPaymentsDto,
+    @Query() pagination: PaginationDto,
+  ) {
+    const { email } = getPaymentsDto;
+    return this.paymentsService.getMyPayments(email, pagination);
+  }
+
   @ApiBody({ type: CreatePaymentDto })
   @ApiOkResponse(createPaymentSchema)
   @ApiBadRequestResponse(badRequestSchema)
@@ -67,7 +85,7 @@ export class PaymentsController {
         address: createPaymentDto.deliveryInfo.address,
         city: createPaymentDto.deliveryInfo.city,
         phone: createPaymentDto.deliveryInfo.phone,
-        state: createPaymentDto.deliveryInfo.state,
+        department: createPaymentDto.deliveryInfo.department,
       },
     });
     return result;

@@ -26,7 +26,7 @@ export class AddDeliveryInfoToPayments1737253066652
         isNullable: true,
       }),
       new TableColumn({
-        name: 'state',
+        name: 'department',
         type: 'varchar',
         isNullable: true,
       }),
@@ -44,7 +44,7 @@ export class AddDeliveryInfoToPayments1737253066652
       'address',
       'city',
       'phone',
-      'state',
+      'department',
       'product_quantity',
     ]);
   }

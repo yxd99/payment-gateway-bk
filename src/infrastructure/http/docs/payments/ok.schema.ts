@@ -36,12 +36,12 @@ export const okPaymentByIdSchema: ApiResponseOptions = {
       code: {
         type: 'number',
         description: 'Status code',
-        example: 200,
+        example: StatusCodes.OK,
       },
       name: {
         type: 'string',
         description: 'Status name',
-        example: 'OK',
+        example: getReasonPhrase(StatusCodes.OK),
       },
       data: {
         type: 'object',
@@ -64,6 +64,53 @@ export const okPaymentByIdSchema: ApiResponseOptions = {
           customerEmail: 'customer@email.com',
           status: 'pending',
           statusMessage: 'Payment is pending',
+        },
+      },
+    },
+  },
+};
+
+export const okPaymentByEmailSchema: ApiResponseOptions = {
+  description: 'get payment by Email',
+  schema: {
+    properties: {
+      code: {
+        type: 'number',
+        description: 'Status code',
+        example: StatusCodes.OK,
+      },
+      name: {
+        type: 'string',
+        description: 'Status name',
+        example: getReasonPhrase(StatusCodes.OK),
+      },
+      data: {
+        type: 'object',
+        description: 'Payment data',
+        example: {
+          id: '7df9777f-a632-4eb9-86ee-8d1ef9f129a8',
+          product: {
+            id: 'dc4ac251-b668-4a78-95d4-558e84deb064',
+            name: 'Rustic Plastic Pants',
+            price: 36554,
+            imageUrl:
+              'https://placeholder.pics/svg/600x900/000000/B3B3B3-000000/image-url',
+            stock: 29,
+            deletedAt: null,
+            createdAt: '2025-01-19T01:36:08.406Z',
+            updatedAt: '2025-01-19T01:36:08.406Z',
+          },
+          reference: 'a89126f4-248d-4683-908f-096d0620ec07',
+          amount: '36554',
+          transactionId: '15102-1731998388-86417',
+          createdAt: '2025-01-19T08:13:11.762Z',
+          customerEmail: 'rene.higuita@gmail.com',
+          status: 'PENDING',
+          address: 'cra 1 cll 1 ',
+          city: 'SantaMarta',
+          phone: '33344445566',
+          department: 'Atlantico',
+          productQuantity: 1,
         },
       },
     },
