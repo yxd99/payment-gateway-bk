@@ -7,7 +7,7 @@ export const PREFIX = 'api';
 export const { PORT } = envs;
 export const SERVERS = [
   {
-    host: `https://payment-gateway-bk.onrender.com`,
+    host: `https://payment-gateway-bk.onrender.com/api`,
     description: 'Development server',
   },
   {
