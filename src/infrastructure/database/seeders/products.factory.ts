@@ -19,8 +19,7 @@ export const ProductsFactory = setSeederFactory(ProductORM, () => {
       max: 30,
     }),
   );
-  product.imageUrl =
-    'https://placeholder.pics/svg/600x900/000000/B3B3B3-000000/image-url';
+  product.imageUrl = faker.image.urlPicsumPhotos();
 
   return product;
 });
