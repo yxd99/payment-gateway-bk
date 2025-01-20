@@ -6,6 +6,7 @@ import { ProductRepository } from '@app/ports/outbound/product.repository';
 import { PaymentsService } from '@app/services/payments.service';
 import { Payment } from '@domain/entities/payment.entity';
 import { Product } from '@domain/entities/product.entity';
+import { PaginationDto } from '@infrastructure/http/dto/pagination.dto';
 
 const mockProductRepository = {
   findOne: jest.fn(),
@@ -14,6 +15,8 @@ const mockProductRepository = {
 
 const mockPaymentRepository = {
   create: jest.fn(),
+  findOne: jest.fn(),
+  findByCustomerEmail: jest.fn(),
 };
 
 const mockPaymentApiRepository = {
@@ -70,6 +73,12 @@ describe('PaymentsService', () => {
         data: {
           id: 1,
           status: 'success',
+          status_message: 'Payment created successfully',
+        },
+      });
+      apiRepository.getTransaction = jest.fn().mockResolvedValue({
+        data: {
+          status: 'APPROVED',
           status_message: 'Payment created successfully',
         },
       });
@@ -200,8 +209,14 @@ describe('PaymentsService', () => {
       apiRepository.tokenizeCard = jest.fn().mockResolvedValue('123');
       apiRepository.createTransaction = jest.fn().mockResolvedValue({
         data: {
-          id: 1,
+          id: 'asd',
           status: 'error',
+          status_message: 'Payment created successfully',
+        },
+      });
+      apiRepository.getTransaction = jest.fn().mockResolvedValue({
+        data: {
+          status: 'APPROVED',
           status_message: 'Payment created successfully',
         },
       });
@@ -330,6 +345,89 @@ describe('PaymentsService', () => {
       const result = await service.getPaymentById('99');
 
       expect(result.getError()).toEqual('Error fetching payment by ID');
+    });
+  });
+
+  describe('getMyPayments', () => {
+    it('should return a successful result with payments', async () => {
+      const email = 'test@example.com';
+      const pagination: PaginationDto = { page: 1, size: 10 };
+      const mockPayments: Payment[] = [
+        {
+          id: '1',
+          product: {
+            id: '1',
+            name: 'product name',
+            price: 100,
+            imageUrl: 'https://image.com',
+            stock: 10,
+            createdAt: new Date(),
+            updatedAt: new Date(),
+          },
+          amount: 1000,
+          transactionId: '1',
+          createdAt: new Date(),
+          reference: '',
+          customerEmail: '',
+          status: '',
+          address: '',
+          city: '',
+          phone: '',
+          department: '',
+          productQuantity: 2,
+        },
+      ];
+
+      jest
+        .spyOn(repository, 'findByCustomerEmail')
+        .mockResolvedValue(mockPayments);
+
+      const result = await service.getMyPayments(email, pagination);
+
+      expect(repository.findByCustomerEmail).toHaveBeenCalledWith(
+        email,
+        pagination,
+      );
+      expect(result.isSuccess).toBe(true);
+      expect(result.getValue()).toEqual(mockPayments);
+    });
+
+    it('should return a failed result if repository throws an error', async () => {
+      const email = 'test@example.com';
+      const pagination: PaginationDto = { page: 1, size: 10 };
+      const mockError = new Error('Database error');
+
+      jest
+        .spyOn(repository, 'findByCustomerEmail')
+        .mockRejectedValue(mockError);
+
+      const result = await service.getMyPayments(email, pagination);
+
+      expect(repository.findByCustomerEmail).toHaveBeenCalledWith(
+        email,
+        pagination,
+      );
+      expect(result.isSuccess).toBe(false);
+      expect(result.getError()).toBe(mockError);
+    });
+
+    it('should return an empty array if no payments are found', async () => {
+      const email = 'test@example.com';
+      const pagination: PaginationDto = { page: 1, size: 10 };
+      const mockPayments: Payment[] = [];
+
+      jest
+        .spyOn(repository, 'findByCustomerEmail')
+        .mockResolvedValue(mockPayments);
+
+      const result = await service.getMyPayments(email, pagination);
+
+      expect(repository.findByCustomerEmail).toHaveBeenCalledWith(
+        email,
+        pagination,
+      );
+      expect(result.isSuccess).toBe(true);
+      expect(result.getValue()).toEqual(mockPayments);
     });
   });
 });
