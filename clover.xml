@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1737369498533" clover="3.2.0">
+  <project timestamp="1737369498533" name="All files">
+    <metrics statements="190" coveredstatements="190" conditionals="8" coveredconditionals="8" methods="29" coveredmethods="29" elements="227" coveredelements="227" complexity="0" loc="190" ncloc="190" packages="8" files="19" classes="19"/>
+    <package name="application.common">
+      <metrics statements="12" coveredstatements="12" conditionals="2" coveredconditionals="2" methods="5" coveredmethods="5"/>
+      <file name="result.ts" path="/home/runner/work/payment-gateway-bk/payment-gateway-bk/src/application/common/result.ts">
+        <metrics statements="12" coveredstatements="12" conditionals="2" coveredconditionals="2" methods="5" coveredmethods="5"/>
+        <line num="1" count="4" type="stmt"/>
+        <line num="3" count="29" type="stmt"/>
+        <line num="4" count="29" type="stmt"/>
+        <line num="5" count="29" type="stmt"/>
+        <line num="9" count="14" type="stmt"/>
+        <line num="13" count="15" type="stmt"/>
+        <line num="17" count="17" type="cond" truecount="1" falsecount="0"/>
+        <line num="18" count="3" type="stmt"/>
+        <line num="20" count="14" type="stmt"/>
+        <line num="24" count="17" type="cond" truecount="1" falsecount="0"/>
+        <line num="25" count="3" type="stmt"/>
+        <line num="27" count="14" type="stmt"/>
+      </file>
+    </package>
+    <package name="application.services">
+      <metrics statements="55" coveredstatements="55" conditionals="3" coveredconditionals="3" methods="8" coveredmethods="8"/>
+      <file name="payments.service.ts" path="/home/runner/work/payment-gateway-bk/payment-gateway-bk/src/application/services/payments.service.ts">
+        <metrics statements="41" coveredstatements="41" conditionals="2" coveredconditionals="2" methods="5" coveredmethods="5"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="11" count="2" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
+        <line num="16" count="2" type="stmt"/>
+        <line num="17" count="14" type="stmt"/>
+        <line num="21" count="14" type="stmt"/>
+        <line num="23" count="14" type="stmt"/>
+        <line num="25" count="14" type="stmt"/>
+        <line num="29" count="5" type="stmt"/>
+        <line num="30" count="5" type="stmt"/>
+        <line num="31" count="5" type="cond" truecount="1" falsecount="0"/>
+        <line num="32" count="1" type="stmt"/>
+        <line num="34" count="4" type="stmt"/>
+        <line num="35" count="4" type="stmt"/>
+        <line num="36" count="4" type="stmt"/>
+        <line num="38" count="4" type="stmt"/>
+        <line num="45" count="3" type="stmt"/>
+        <line num="54" count="2" type="stmt"/>
+        <line num="57" count="2" type="stmt"/>
+        <line num="58" count="2" type="stmt"/>
+        <line num="73" count="2" type="stmt"/>
+        <line num="74" count="1" type="stmt"/>
+        <line num="76" count="3" type="stmt"/>
+        <line num="83" count="2" type="stmt"/>
+        <line num="84" count="2" type="stmt"/>
+        <line num="85" count="1" type="stmt"/>
+        <line num="87" count="1" type="stmt"/>
+        <line num="94" count="3" type="stmt"/>
+        <line num="95" count="3" type="stmt"/>
+        <line num="96" count="2" type="cond" truecount="1" falsecount="0"/>
+        <line num="97" count="1" type="stmt"/>
+        <line num="99" count="1" type="stmt"/>
+        <line num="102" count="1" type="stmt"/>
+        <line num="103" count="1" type="stmt"/>
+        <line num="109" count="1" type="stmt"/>
+        <line num="117" count="3" type="stmt"/>
+        <line num="118" count="3" type="stmt"/>
+        <line num="122" count="2" type="stmt"/>
+        <line num="124" count="1" type="stmt"/>
+      </file>
+      <file name="products.service.ts" path="/home/runner/work/payment-gateway-bk/payment-gateway-bk/src/application/services/products.service.ts">
+        <metrics statements="14" coveredstatements="14" conditionals="1" coveredconditionals="1" methods="3" coveredmethods="3"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="12" count="6" type="stmt"/>
+        <line num="16" count="2" type="stmt"/>
+        <line num="17" count="2" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="25" count="3" type="stmt"/>
+        <line num="26" count="3" type="stmt"/>
+        <line num="27" count="2" type="cond" truecount="1" falsecount="0"/>
+        <line num="28" count="1" type="stmt"/>
+        <line num="30" count="1" type="stmt"/>
+        <line num="32" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="domain.entities">
+      <metrics statements="22" coveredstatements="22" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+      <file name="payment.entity.ts" path="/home/runner/work/payment-gateway-bk/payment-gateway-bk/src/domain/entities/payment.entity.ts">
+        <metrics statements="14" coveredstatements="14" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="19" count="2" type="stmt"/>
+        <line num="61" count="6" type="stmt"/>
+        <line num="62" count="6" type="stmt"/>
+        <line num="63" count="6" type="stmt"/>
+        <line num="64" count="6" type="stmt"/>
+        <line num="65" count="6" type="stmt"/>
+        <line num="66" count="6" type="stmt"/>
+        <line num="67" count="6" type="stmt"/>
+        <line num="68" count="6" type="stmt"/>
+        <line num="69" count="6" type="stmt"/>
+        <line num="70" count="6" type="stmt"/>
+        <line num="71" count="6" type="stmt"/>
+        <line num="72" count="6" type="stmt"/>
+        <line num="73" count="6" type="stmt"/>
+      </file>
+      <file name="product.entity.ts" path="/home/runner/work/payment-gateway-bk/payment-gateway-bk/src/domain/entities/product.entity.ts">
+        <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="1" count="4" type="stmt"/>
+        <line num="3" count="10" type="stmt"/>
+        <line num="4" count="10" type="stmt"/>
+        <line num="5" count="10" type="stmt"/>
+        <line num="6" count="10" type="stmt"/>
+        <line num="7" count="10" type="stmt"/>
+        <line num="8" count="10" type="stmt"/>
+        <line num="9" count="10" type="stmt"/>
+      </file>
+    </package>
+    <package name="infrastructure.http.controllers">
+      <metrics statements="44" coveredstatements="44" conditionals="3" coveredconditionals="3" methods="8" coveredmethods="8"/>
+      <file name="payments.controller.ts" path="/home/runner/work/payment-gateway-bk/payment-gateway-bk/src/infrastructure/http/controllers/payments.controller.ts">
+        <metrics statements="25" coveredstatements="25" conditionals="1" coveredconditionals="1" methods="5" coveredmethods="5"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
+        <line num="29" count="1" type="stmt"/>
+        <line num="30" count="1" type="stmt"/>
+        <line num="31" count="1" type="stmt"/>
+        <line num="34" count="1" type="stmt"/>
+        <line num="35" count="11" type="stmt"/>
+        <line num="39" count="1" type="stmt"/>
+        <line num="40" count="1" type="stmt"/>
+        <line num="46" count="1" type="stmt"/>
+        <line num="47" count="2" type="stmt"/>
+        <line num="48" count="2" type="cond" truecount="1" falsecount="0"/>
+        <line num="49" count="1" type="stmt"/>
+        <line num="52" count="1" type="stmt"/>
+        <line num="58" count="1" type="stmt"/>
+        <line num="62" count="3" type="stmt"/>
+        <line num="63" count="3" type="stmt"/>
+        <line num="70" count="1" type="stmt"/>
+        <line num="71" count="3" type="stmt"/>
+        <line num="91" count="2" type="stmt"/>
+      </file>
+      <file name="products.controller.ts" path="/home/runner/work/payment-gateway-bk/payment-gateway-bk/src/infrastructure/http/controllers/products.controller.ts">
+        <metrics statements="19" coveredstatements="19" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="3"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="25" count="1" type="stmt"/>
+        <line num="26" count="5" type="stmt"/>
+        <line num="31" count="1" type="stmt"/>
+        <line num="32" count="2" type="stmt"/>
+        <line num="34" count="2" type="cond" truecount="1" falsecount="0"/>
+        <line num="35" count="1" type="stmt"/>
+        <line num="38" count="1" type="stmt"/>
+        <line num="44" count="1" type="stmt"/>
+        <line num="45" count="2" type="stmt"/>
+        <line num="47" count="2" type="cond" truecount="1" falsecount="0"/>
+        <line num="48" count="1" type="stmt"/>
+        <line num="51" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="infrastructure.http.docs.payments">
+      <metrics statements="11" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="bad-request.schema.ts" path="/home/runner/work/payment-gateway-bk/payment-gateway-bk/src/infrastructure/http/docs/payments/bad-request.schema.ts">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="44" count="1" type="stmt"/>
+      </file>
+      <file name="created.schema.ts" path="/home/runner/work/payment-gateway-bk/payment-gateway-bk/src/infrastructure/http/docs/payments/created.schema.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+      </file>
+      <file name="not-found.schema.ts" path="/home/runner/work/payment-gateway-bk/payment-gateway-bk/src/infrastructure/http/docs/payments/not-found.schema.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+      </file>
+      <file name="ok.schema.ts" path="/home/runner/work/payment-gateway-bk/payment-gateway-bk/src/infrastructure/http/docs/payments/ok.schema.ts">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="32" count="1" type="stmt"/>
+        <line num="73" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="infrastructure.http.docs.products">
+      <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="bad-request.schema.ts" path="/home/runner/work/payment-gateway-bk/payment-gateway-bk/src/infrastructure/http/docs/products/bad-request.schema.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+      </file>
+      <file name="not-found.schema.ts" path="/home/runner/work/payment-gateway-bk/payment-gateway-bk/src/infrastructure/http/docs/products/not-found.schema.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+      </file>
+      <file name="ok.schema.ts" path="/home/runner/work/payment-gateway-bk/payment-gateway-bk/src/infrastructure/http/docs/products/ok.schema.ts">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="35" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="infrastructure.http.dto">
+      <metrics statements="36" coveredstatements="36" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
+      <file name="delivery-info.dto.ts" path="/home/runner/work/payment-gateway-bk/payment-gateway-bk/src/infrastructure/http/dto/delivery-info.dto.ts">
+        <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+      </file>
+      <file name="get-payments.dto.ts" path="/home/runner/work/payment-gateway-bk/payment-gateway-bk/src/infrastructure/http/dto/get-payments.dto.ts">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+      </file>
+      <file name="pagination.dto.ts" path="/home/runner/work/payment-gateway-bk/payment-gateway-bk/src/infrastructure/http/dto/pagination.dto.ts">
+        <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="2" count="2" type="stmt"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="13" count="5" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="22" count="5" type="stmt"/>
+      </file>
+      <file name="payment.dto.ts" path="/home/runner/work/payment-gateway-bk/payment-gateway-bk/src/infrastructure/http/dto/payment.dto.ts">
+        <metrics statements="17" coveredstatements="17" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="25" count="1" type="stmt"/>
+        <line num="33" count="1" type="stmt"/>
+        <line num="38" count="1" type="stmt"/>
+        <line num="43" count="1" type="stmt"/>
+        <line num="47" count="1" type="stmt"/>
+        <line num="52" count="1" type="stmt"/>
+        <line num="57" count="1" type="stmt"/>
+        <line num="62" count="1" type="stmt"/>
+        <line num="67" count="1" type="stmt"/>
+        <line num="71" count="1" type="stmt"/>
+        <line num="72" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="infrastructure.utils">
+      <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+      <file name="sleep.util.ts" path="/home/runner/work/payment-gateway-bk/payment-gateway-bk/src/infrastructure/utils/sleep.util.ts">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="2" count="2" type="stmt"/>
+        <line num="3" count="2" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>
